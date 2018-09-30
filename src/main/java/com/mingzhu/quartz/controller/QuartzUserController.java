@@ -45,4 +45,40 @@ public class QuartzUserController {
         quartzUserService.deleteJob(uid);
 
     }
+
+    /**
+     * 修改一个任务
+     * @param uid
+     * @throws SchedulerException
+     */
+    @GetMapping("/update")
+    public void updateJob(@RequestParam Integer uid) throws SchedulerException {
+        quartzUserService.updateJob(uid);
+    }
+
+    /**
+     * 暂停所有的定时任务
+     * @throws SchedulerException
+     */
+    @GetMapping("/standby")
+    public void standby() throws SchedulerException {
+        quartzUserService.standby();
+    }
+
+    /**
+     * 启动所有的定时任务
+     */
+    @GetMapping("/start")
+    public void startJobs() throws SchedulerException {
+        quartzUserService.startJobs();
+    }
+
+    /**
+     * 关闭所有的定时任务
+     * @throws SchedulerException
+     */
+    @GetMapping("/shutdown")
+    public void shutdownJobs() throws SchedulerException {
+        quartzUserService.shutdownJobs();
+    }
 }
